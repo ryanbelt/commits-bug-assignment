@@ -27,6 +27,10 @@ Default url after npm start will be `http://localhost:8000/index.html`
 
 Default Commits Get Api will be `localhost:8000/commits?num_results=3` with default num_result = 100.
 
+## Periodically commits grabber
+
+It will grab the most recent 100 commits per min (due to the rate limits of the api). Using mongo unique index to eliminate duplicate commits.
+
 ## LICENSE:
 
 MIT, see [LICENSE.md](https://github.com/williamsolivera/node-express-mongo-seed/blob/master/LICENSE).

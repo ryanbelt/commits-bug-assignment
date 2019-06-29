@@ -7,7 +7,7 @@ config.server = {
 	port: process.env.SERVER_PORT || 8000
 };
 config.db = {
-	url: process.env.DATABASE_URL || 'localhost:27017/node-express-mongo-seed'
+	url: process.env.DATABASE_URL || 'localhost:27017/commits-assignment'
 }
 config.redis = {
 	host: process.env.REDIS_HOST || 'localhost',

@@ -34,7 +34,7 @@ $(function(){
     .then(function(data){
         $('body').html();
         data.commits.forEach(function(value,index){
-            $('body').append(`<div class='commit'><a href=${value.url}>${value.repository}</a><p class='message'>${value.message}</p><p class='created'>${value.commit_date_time}</p></div>`)
+            $('body').append(`<div class='commit'><h3>${value.repository}</h3><a href=${value.url}>${value.url}</a><p class='message'>${value.message}</p><p class='created'>${value.commit_date_time}</p></div>`)
         })
     })
 })

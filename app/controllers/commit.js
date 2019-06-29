@@ -36,13 +36,12 @@ exports.insertCommit = function(commitDocuments){
 
 exports.getCommits = function(req, res, next){
     var num_res = Number.parseInt(req.query.num_results || '100');
-    console.log(num_res)
 
     Commit.find({}).sort({'created':-1}).limit(num_res).exec()
     .then(function(data){
         var data = data.map(function(value){
             return {
-                url: value.meta.repository.html_url,
+                url: value.meta.commit.url,
                 repository: value.meta.repository.full_name,
                 commit_date_time: value.created,
                 message: value.meta.commit.message
@@ -50,7 +49,4 @@ exports.getCommits = function(req, res, next){
         })
         res.json({commits:data})
     })
-    // .catch(function(err){
-    //     res.status(400).json({message:"please try again later."})
-    // })
 }
