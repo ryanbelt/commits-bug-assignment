@@ -30,20 +30,17 @@ router.route(app);
 app.use(express.static('public'))
 
 
-var startDate = moment().subtract(2,'days').format('YYYY-MM-DD');
-var endDate = moment().subtract(1,'days').format('YYYY-MM-DD');
+var startDate = moment().subtract(1,'days').format('YYYY-MM-DD');
+var endDate = moment().format('YYYY-MM-DD');
 var page = 0;
 function commitGrabber(){
-	if( moment().subtract(2,'days').format('YYYY-MM-DD') == startDate){
-		page ++;
-	} else {
-		startDate = moment().subtract(2,'days').format('YYYY-MM-DD');
-		endDate = moment().subtract(1,'days').format('YYYY-MM-DD')
-		page = 1;
-	}
-	console.log('grabber------', startDate, endDate, page)
+
+		startDate = moment().subtract(1,'days').format('YYYY-MM-DD');
+		endDate = moment().format('YYYY-MM-DD')
+
+	console.log('grabber------', startDate, endDate)
 	request({
-		url: `https://api.github.com/search/commits?q=bug+committer-date:${startDate}..${endDate}&sort=committer-date&order=desc&page=${page}`,
+		url: `https://api.github.com/search/commits?q=bug+committer-date:${startDate}..${endDate}&sort=committer-date&order=desc`,
 		headers: {
 			'User-Agent': 'Request-Promise',
 			'Accept': 'application/vnd.github.cloak-preview'
