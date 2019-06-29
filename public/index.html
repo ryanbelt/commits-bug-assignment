@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <header>
+            <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+            <style>
+                .commit{
+                    margin:10px;
+                    border: 1px solid black;
+                    border-radius: 4px;
+                }
+                .commit a{
+                    font-size:16px;
+                }
+                .commit .message{
+                    font-size: 14px;
+                }
+                .commit .created{
+                    font-size: 10px;
+                    font-style: italic;
+                }
+            </style>
+    </header>
+<body>
+
+
+
+</body>
+<script>
+$(function(){
+    $.get('http://localhost:8000/commits')
+    .then(function(data){
+        $('body').html();
+        data.commits.forEach(function(value,index){
+            $('body').append(`<div class='commit'><a href=${value.url}>${value.repository}</a><p class='message'>${value.message}</p><p class='created'>${value.commit_date_time}</p></div>`)
+        })
+    })
+})
+</script>
+</html>
